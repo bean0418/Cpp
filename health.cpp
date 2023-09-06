@@ -8,6 +8,9 @@ private:
     double height;
     double weight;
     
+public:
+    double getBmi();
+    void setInfor();
 };
 
 int main() {
@@ -15,3 +18,4 @@ int main() {
     
     return 0;
 }
+
