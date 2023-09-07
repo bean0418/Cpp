@@ -8,17 +8,19 @@ class Management
 {
 private:
     string name;
+    string sex;
     double height;
     double weight;
-    bool check = false;
-    bool sex = false;
+    bool Infocheck;
+    double muscle;
     
 public:
     double getBmi();
     void setInfor();
     string getName(){return name;}
-    bool getCheck(){return check;}
-    bool getSex(){return sex;}
+    bool getCheck(){return Infocheck;}
+    string getSex(){return sex;}
+    double getMuscle();
 };
 
 int main() {
@@ -42,8 +44,17 @@ int main() {
                 obj.setInfor();
             }
             break;
+
             case 2:
-            cout << obj.getName() << "님의 체질량 지수는 " << obj.getBmi() << "입니다." << endl;
+            cout << endl << obj.getName() << "님의 체질량 지수는 " << obj.getBmi() <<
+            "입니다." << endl << endl;
+            break;
+
+            case 3:
+            cout << endl << obj.getName() << "님의 적정 골격근량은 " << obj.getMuscle()
+            << "kg 입니다." << endl << "이는 " << obj.getSex() << "기준으로 계산되었습니다."
+            << endl << endl;
+            break;
         }
     }
 
@@ -63,8 +74,6 @@ void menu(){
 }
 
 void Management::setInfor(){
-    string gender;
-
     cout << "이름을 입력해주세요: ";
     cin >> name;
 
@@ -75,21 +84,24 @@ void Management::setInfor(){
     cin >> weight;
 
     cout << name << "님의 성별을 입력해주세요(남자 또는 여자): ";
-    cin >> gender;
+    cin >> sex;
 
-    if(gender == "남자"){
-        sex = false;
-    }
-    else{
-        sex = true;
-    }
-
-    check = true;
+    Infocheck = true;
 
     cout << "***** 정보가 입력되었습니다. *****" << endl;
-    cout << gender << ", 키: " << height << "cm " << "몸무게: " << weight << "kg" << endl;
+    cout << sex << ", 키: " << height << "cm " << "몸무게: " << weight << "kg" << endl;
 }
 
 double Management::getBmi(){
     return weight / ((height/100) * (height/100));
+}
+
+double Management::getMuscle(){
+    if(sex == "남자"){ // 남자일 경우
+        return weight * 0.43;
+    }
+    else{ // 여자일 경우
+        return weight * 0.38;
+    }
+
 }
