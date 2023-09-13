@@ -97,10 +97,10 @@ double Management::getBmi(){
 }
 
 double Management::getMuscle(){
-    if(sex == "남자"){ // 남자일 경우
+    if(sex == "남자"){
         return weight * 0.43;
     }
-    else{ // 여자일 경우
+    else{
         return weight * 0.38;
     }
 
