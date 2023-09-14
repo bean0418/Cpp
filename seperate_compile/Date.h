@@ -8,7 +8,7 @@
 class Date {
 public:
 	explicit Date(int = 1, int = 1, int = 1900);
-	Date(Date& origin);
+	Date(const Date& origin);
 	std::string toString() const;
 	~Date();
 

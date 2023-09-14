@@ -12,7 +12,7 @@ Date::Date(int mn, int dy, int yr)
 		cout << "Date object constructor for date " << toString() << endl;
 }
 
-Date::Date(Date& origin) {
+Date::Date(const Date& origin) {
 	month = origin.month;
 	day = origin.day;
 	year = origin.year;
